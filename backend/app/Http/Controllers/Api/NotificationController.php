@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Http\Controllers\Api;
+
+use App\Http\Controllers\Controller;
+use App\Services\NotificationService;
+use Illuminate\Http\Request;
+
+class NotificationController extends Controller
+{
+    public function __construct(
+        private readonly NotificationService $notificationService,
+    ) {
+    }
+
+    public function index(Request $request)
+    {
+        return response()->json($this->notificationService->history($request->user()));
+    }
+}

@@ -1,0 +1,1 @@
+{"sessionId":"8bc03f","runId":"ngrok-dashboard-disappear","hypothesisId":"H8","location":"ProfileController::me","message":"Profile endpoint hit","data":{"has_auth_header":true,"user_id":1,"route":"\/api\/profile"},"timestamp":1777409971734}
