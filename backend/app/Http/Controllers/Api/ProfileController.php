@@ -34,15 +34,22 @@ class ProfileController extends Controller
     public function uploadAvatar(Request $request)
     {
         $validated = $request->validate([
-            'avatar' => ['required', 'file', 'image', 'mimes:jpg,jpeg,jpe', 'mimetypes:image/jpeg,image/pjpeg', 'max:5120'],
+            // `image` can reject some camera/gallery files; `mimes` + size is enough for avatars
+            'avatar' => ['required', 'file', 'mimes:jpg,jpeg,jpe,png,webp', 'max:5120'],
         ]);
 
         $user = $request->user();
         $path = $validated['avatar']->store('avatars', 'public');
-        $avatarUrl = url('/storage/' . $path);
+        $path = str_replace('\\', '/', $path);
+        // Prefer the host the client used (LAN IP, ngrok, etc.) so stored URLs load on phones;
+        // fall back to APP_URL for odd CLI / proxy setups.
+        $fromRequest = rtrim($request->getSchemeAndHttpHost(), '/');
+        $fromConfig = rtrim((string) config('app.url'), '/');
+        $base = $fromRequest !== '' ? $fromRequest : $fromConfig;
+        $avatarUrl = $base . '/storage/' . ltrim($path, '/');
 
-        if (!empty($user->avatar_url)) {
-            $previousPath = str_replace(url('/storage/') . '/', '', $user->avatar_url);
+        if (!empty($user->avatar_url) && preg_match('#/storage/(.+)$#u', $user->avatar_url, $matches)) {
+            $previousPath = $matches[1];
             if ($previousPath !== $path && Storage::disk('public')->exists($previousPath)) {
                 Storage::disk('public')->delete($previousPath);
             }

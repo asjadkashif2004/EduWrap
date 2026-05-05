@@ -17,4 +17,25 @@ class NotificationController extends Controller
     {
         return response()->json($this->notificationService->history($request->user()));
     }
+
+    public function unreadCount(Request $request)
+    {
+        return response()->json([
+            'unread_count' => $this->notificationService->unreadCount($request->user()),
+        ]);
+    }
+
+    public function markAllRead(Request $request)
+    {
+        $this->notificationService->markAllRead($request->user());
+
+        return response()->noContent();
+    }
+
+    public function destroyAll(Request $request)
+    {
+        $this->notificationService->clearAll($request->user());
+
+        return response()->noContent();
+    }
 }

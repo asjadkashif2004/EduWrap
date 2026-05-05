@@ -36,4 +36,19 @@ class NotificationService
     {
         return $this->notificationRepository->listByUser($user->id);
     }
+
+    public function unreadCount(User $user): int
+    {
+        return $this->notificationRepository->unreadCountForUser($user->id);
+    }
+
+    public function markAllRead(User $user): void
+    {
+        $this->notificationRepository->markAllReadForUser($user->id);
+    }
+
+    public function clearAll(User $user): void
+    {
+        $this->notificationRepository->deleteAllForUser($user->id);
+    }
 }

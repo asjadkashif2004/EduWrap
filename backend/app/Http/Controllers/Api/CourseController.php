@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Enrollment;
+use App\Models\WishlistItem;
 use App\Services\CourseService;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class CourseController extends Controller
 
     public function index()
     {
-        return response()->json($this->courseService->listCourses());
+        return response()->json($this->courseService->listCatalogPayload());
     }
 
     public function show(Request $request, int $courseId)
@@ -34,9 +35,13 @@ class CourseController extends Controller
             ->where('course_id', $courseId)
             ->first();
 
-        $payload = $course->toArray();
-        $payload['my_enrollment'] = $myEnrollment;
+        $isWishlisted = WishlistItem::query()
+            ->where('user_id', $request->user()->id)
+            ->where('course_id', $courseId)
+            ->exists();
 
-        return response()->json($payload);
+        return response()->json(
+            $this->courseService->courseDetailPayload($course, $myEnrollment, $isWishlisted)
+        );
     }
 }

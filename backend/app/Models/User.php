@@ -5,7 +5,6 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -38,14 +37,9 @@ class User extends Authenticatable
         return $this->hasMany(Enrollment::class);
     }
 
-    public function cart(): HasOne
+    public function wishlistItems(): HasMany
     {
-        return $this->hasOne(Cart::class);
-    }
-
-    public function orders(): HasMany
-    {
-        return $this->hasMany(Order::class);
+        return $this->hasMany(WishlistItem::class);
     }
 
     public function chatbotMessages(): HasMany

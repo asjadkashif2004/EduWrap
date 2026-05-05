@@ -33,7 +33,6 @@ class DatabaseSeeder extends Seeder
                 'youtube_url' => 'https://www.youtube.com/watch?v=MYyJ4PuL4pY',
                 'category' => 'Backend',
                 'level' => 'Intermediate',
-                'price' => 49.99,
                 'duration_minutes' => 360,
             ],
             [
@@ -44,7 +43,6 @@ class DatabaseSeeder extends Seeder
                 'youtube_url' => 'https://www.youtube.com/watch?v=0-S5a0eXPoc',
                 'category' => 'Mobile',
                 'level' => 'Beginner',
-                'price' => 39.99,
                 'duration_minutes' => 300,
             ],
             [
@@ -55,7 +53,6 @@ class DatabaseSeeder extends Seeder
                 'youtube_url' => 'https://www.youtube.com/watch?v=7eh4d6sabA0',
                 'category' => 'AI',
                 'level' => 'Intermediate',
-                'price' => 59.99,
                 'duration_minutes' => 420,
             ],
             [
@@ -66,7 +63,6 @@ class DatabaseSeeder extends Seeder
                 'youtube_url' => 'https://www.youtube.com/watch?v=HXV3zeQKqGY',
                 'category' => 'Database',
                 'level' => 'Advanced',
-                'price' => 44.99,
                 'duration_minutes' => 280,
             ],
             [
@@ -77,7 +73,6 @@ class DatabaseSeeder extends Seeder
                 'youtube_url' => 'https://www.youtube.com/watch?v=9zUHg7xjIqQ',
                 'category' => 'Backend',
                 'level' => 'Intermediate',
-                'price' => 46.99,
                 'duration_minutes' => 320,
             ],
             [
@@ -88,7 +83,6 @@ class DatabaseSeeder extends Seeder
                 'youtube_url' => 'https://www.youtube.com/watch?v=c9Wg6Cb_YlU',
                 'category' => 'Design',
                 'level' => 'Beginner',
-                'price' => 29.99,
                 'duration_minutes' => 210,
             ],
             [
@@ -99,7 +93,6 @@ class DatabaseSeeder extends Seeder
                 'youtube_url' => 'https://www.youtube.com/watch?v=RBSGKlAvoiM',
                 'category' => 'Programming',
                 'level' => 'Intermediate',
-                'price' => 34.99,
                 'duration_minutes' => 260,
             ],
             [
@@ -110,7 +103,6 @@ class DatabaseSeeder extends Seeder
                 'youtube_url' => 'https://www.youtube.com/watch?v=vmEHCJofslg',
                 'category' => 'Data Science',
                 'level' => 'Beginner',
-                'price' => 38.99,
                 'duration_minutes' => 300,
             ],
             [
@@ -118,10 +110,9 @@ class DatabaseSeeder extends Seeder
                 'description' => 'Automate build, test, and deployment workflows for modern applications.',
                 'thumbnail_url' => 'https://images.unsplash.com/photo-1451187580459-43490279c0fa',
                 'documentation_url' => 'https://docs.github.com/en/actions',
-                'youtube_url' => 'https://www.youtube.com/watch?v=R8_veQiYBjI',
+                'youtube_url' => 'https://www.youtube.com/watch?v=Ou9j73aWgyE&list=PLdpzxOOAlwvIKMhk8WhzN1pYoJ1YU8Csa',
                 'category' => 'DevOps',
                 'level' => 'Intermediate',
-                'price' => 52.99,
                 'duration_minutes' => 340,
             ],
             [
@@ -132,7 +123,6 @@ class DatabaseSeeder extends Seeder
                 'youtube_url' => 'https://www.youtube.com/watch?v=inWWhr5tnEA',
                 'category' => 'Security',
                 'level' => 'Beginner',
-                'price' => 33.99,
                 'duration_minutes' => 240,
             ],
             [
@@ -143,7 +133,6 @@ class DatabaseSeeder extends Seeder
                 'youtube_url' => 'https://www.youtube.com/watch?v=UzLMhqg3_Wc',
                 'category' => 'Architecture',
                 'level' => 'Advanced',
-                'price' => 64.99,
                 'duration_minutes' => 410,
             ],
             [
@@ -154,7 +143,6 @@ class DatabaseSeeder extends Seeder
                 'youtube_url' => 'https://www.youtube.com/watch?v=wm5gMKuwSYk',
                 'category' => 'Web',
                 'level' => 'Intermediate',
-                'price' => 54.99,
                 'duration_minutes' => 360,
             ],
             [
@@ -162,10 +150,9 @@ class DatabaseSeeder extends Seeder
                 'description' => 'Containerize applications and deploy scalable services on Kubernetes.',
                 'thumbnail_url' => 'https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9',
                 'documentation_url' => 'https://kubernetes.io/docs/home/',
-                'youtube_url' => 'https://www.youtube.com/watch?v=3c-iBn73dDE',
+                'youtube_url' => 'https://www.youtube.com/watch?v=Ou9j73aWgyE&list=PLdpzxOOAlwvIKMhk8WhzN1pYoJ1YU8Csa',
                 'category' => 'DevOps',
                 'level' => 'Intermediate',
-                'price' => 57.99,
                 'duration_minutes' => 390,
             ],
             [
@@ -176,25 +163,129 @@ class DatabaseSeeder extends Seeder
                 'youtube_url' => 'https://www.youtube.com/watch?v=30LWjhZzg50',
                 'category' => 'Programming',
                 'level' => 'Advanced',
-                'price' => 42.99,
                 'duration_minutes' => 295,
             ],
         ];
 
+        $categoryDocHubs = [
+            'Backend' => [
+                'geeksforgeeks_url' => 'https://www.geeksforgeeks.org/laravel/',
+                'w3schools_url' => 'https://www.w3schools.com/php/',
+            ],
+            'Mobile' => [
+                'geeksforgeeks_url' => 'https://www.geeksforgeeks.org/react-native-tutorial/',
+                'w3schools_url' => 'https://www.w3schools.com/react/',
+            ],
+            'AI' => [
+                'geeksforgeeks_url' => 'https://www.geeksforgeeks.org/machine-learning/',
+                'w3schools_url' => 'https://www.w3schools.com/python/',
+            ],
+            'Database' => [
+                'geeksforgeeks_url' => 'https://www.geeksforgeeks.org/sql-tutorial/',
+                'w3schools_url' => 'https://www.w3schools.com/sql/',
+            ],
+            'Design' => [
+                'geeksforgeeks_url' => 'https://www.geeksforgeeks.org/ui-ux-design-tutorial/',
+                'w3schools_url' => 'https://www.w3schools.com/css/',
+            ],
+            'Programming' => [
+                'geeksforgeeks_url' => 'https://www.geeksforgeeks.org/data-structures/',
+                'w3schools_url' => 'https://www.w3schools.com/js/',
+            ],
+            'Data Science' => [
+                'geeksforgeeks_url' => 'https://www.geeksforgeeks.org/data-analysis-with-python-course/',
+                'w3schools_url' => 'https://www.w3schools.com/ai/ai_sciences.asp',
+            ],
+            'DevOps' => [
+                'geeksforgeeks_url' => 'https://www.geeksforgeeks.org/devops-tutorial/',
+                'w3schools_url' => 'https://www.w3schools.com/docker/',
+            ],
+            'Security' => [
+                'geeksforgeeks_url' => 'https://www.geeksforgeeks.org/cyber-security-tutorial/',
+                'w3schools_url' => 'https://www.w3schools.com/cybersecurity/',
+            ],
+            'Architecture' => [
+                'geeksforgeeks_url' => 'https://www.geeksforgeeks.org/system-design/',
+                'w3schools_url' => 'https://www.w3schools.com/',
+            ],
+            'Web' => [
+                'geeksforgeeks_url' => 'https://www.geeksforgeeks.org/javascript/',
+                'w3schools_url' => 'https://www.w3schools.com/html/',
+            ],
+        ];
+        $defaultDocHub = [
+            'geeksforgeeks_url' => 'https://www.geeksforgeeks.org/courses/',
+            'w3schools_url' => 'https://www.w3schools.com/',
+        ];
+
+        $lessonPrimaryVideos = [
+            1 => 'https://www.youtube.com/watch?v=MFwJKSM0Yp8',
+            2 => 'https://www.youtube.com/watch?v=ImtHd5n9UFM',
+            3 => 'https://www.youtube.com/watch?v=hHuG77JITUo',
+            4 => 'https://www.youtube.com/watch?v=8aGhZQkoFbQ',
+            5 => 'https://www.youtube.com/watch?v=Ke90Tje7VS0',
+        ];
+        $lessonSupplementaryVideos = [
+            1 => 'https://www.youtube.com/watch?v=y6120QOlsfU',
+            2 => 'https://www.youtube.com/watch?v=UBOj6rqRUME',
+            3 => 'https://www.youtube.com/watch?v=IeTybKL1pM4',
+            4 => 'https://www.youtube.com/watch?v=ieTHC78gGTU',
+            5 => 'https://www.youtube.com/watch?v=0pThn9npXdE',
+        ];
+
+        /** DevOps courses: curated playlist + per-lesson videos (see https://www.youtube.com/watch?v=Ou9j73aWgyE&list=... ). */
+        $devOpsLessonPrimaryVideos = [
+            1 => 'https://www.youtube.com/watch?v=Ou9j73aWgyE&list=PLdpzxOOAlwvIKMhk8WhzN1pYoJ1YU8Csa',
+            2 => 'https://www.youtube.com/watch?v=h7LDnVsNRVI',
+            3 => 'https://www.youtube.com/watch?v=scEDHsr3APg',
+            4 => 'https://www.youtube.com/watch?v=zpYCV56U5HA',
+            5 => 'https://www.youtube.com/watch?v=Xrgk023l4lI',
+        ];
+        $devOpsLessonSupplementaryVideos = [
+            1 => 'https://www.youtube.com/watch?v=h7LDnVsNRVI',
+            2 => 'https://www.youtube.com/watch?v=scEDHsr3APg',
+            3 => 'https://www.youtube.com/watch?v=zpYCV56U5HA',
+            4 => 'https://www.youtube.com/watch?v=Xrgk023l4lI',
+            5 => 'https://www.youtube.com/watch?v=Ou9j73aWgyE&list=PLdpzxOOAlwvIKMhk8WhzN1pYoJ1YU8Csa',
+        ];
+        $lessonGfg = [
+            1 => 'https://www.geeksforgeeks.org/array-data-structure/',
+            2 => 'https://www.geeksforgeeks.org/string-data-structure/',
+            3 => 'https://www.geeksforgeeks.org/sorting-algorithms/',
+            4 => 'https://www.geeksforgeeks.org/graph-data-structure-and-algorithms/',
+            5 => 'https://www.geeksforgeeks.org/dynamic-programming/',
+        ];
+        $lessonW3 = [
+            1 => 'https://www.w3schools.com/html/html5_intro.asp',
+            2 => 'https://www.w3schools.com/css/css_intro.asp',
+            3 => 'https://www.w3schools.com/js/js_intro.asp',
+            4 => 'https://www.w3schools.com/sql/sql_intro.asp',
+            5 => 'https://www.w3schools.com/python/python_intro.asp',
+        ];
+
         foreach ($courses as $courseData) {
+            $docHub = $categoryDocHubs[$courseData['category']] ?? $defaultDocHub;
             $course = Course::query()->updateOrCreate(
                 ['title' => $courseData['title']],
-                $courseData
+                array_merge($courseData, $docHub)
             );
 
+            $isDevOps = ($courseData['category'] ?? '') === 'DevOps';
+
             foreach (range(1, 5) as $position) {
+                $primaryVid = $isDevOps ? $devOpsLessonPrimaryVideos[$position] : $lessonPrimaryVideos[$position];
+                $suppVid = $isDevOps ? $devOpsLessonSupplementaryVideos[$position] : $lessonSupplementaryVideos[$position];
+
                 Lesson::query()->updateOrCreate([
                     'course_id' => $course->id,
                     'title' => "Lesson {$position}: {$course->title}",
                 ], [
-                    'content' => "Content for lesson {$position}",
-                    'video_url' => $courseData['youtube_url'],
+                    'content' => "Hands-on content for lecture {$position}. Use the links below for extra videos and reading.",
+                    'video_url' => $primaryVid,
                     'notes_url' => $courseData['documentation_url'],
+                    'supplementary_video_url' => $suppVid,
+                    'geeksforgeeks_url' => $lessonGfg[$position],
+                    'w3schools_url' => $lessonW3[$position],
                     'position' => $position,
                     'duration_minutes' => 20 + $position * 5,
                 ]);

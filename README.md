@@ -8,6 +8,7 @@ EduWrap is a full-stack AI-powered learning platform with:
 - Secure webhook event logging and validation
 - FCM-ready notification pipeline
 - Recommendation and analytics APIs
+- **All courses are free** — enroll directly; wishlist for saving courses (no cart or checkout)
 
 ## Project Structure
 
@@ -51,7 +52,7 @@ API base URL: `http://127.0.0.1:8000/api`
 - Dynamic dashboard with progress widgets and quick action shortcuts
 - Improved courses screen with search, categories/level badges, and visual loading states
 - Enhanced course details page with docs + video quick actions
-- Better cart interactions with clear button states and checkout progress feedback
+- Wishlist for saving courses and direct free enrollment from course details
 
 ## Required API Endpoints
 
@@ -59,8 +60,8 @@ API base URL: `http://127.0.0.1:8000/api`
 - `POST /api/login`
 - `GET /api/courses`
 - `POST /api/enroll`
-- `POST /api/cart`
-- `POST /api/order`
+- `GET /api/wishlist`
+- `POST /api/wishlist`
 - `GET /api/notifications`
 - `POST /api/webhook`
 
@@ -68,7 +69,6 @@ API base URL: `http://127.0.0.1:8000/api`
 
 - `PATCH /api/enroll/{enrollmentId}/progress`
 - `GET /api/my-enrollments`
-- `GET /api/cart`
 - `GET /api/recommendations`
 - `POST /api/analytics/track`
 - `GET /api/analytics/insights`
@@ -93,18 +93,15 @@ API base URL: `http://127.0.0.1:8000/api`
 
 ## Core Flow
 
-1. User enrolls or checks out from app
-2. Laravel stores records in MySQL
-3. Laravel dispatches webhook event
-4. Webhook handler validates and logs the event
+1. User saves courses to a wishlist (optional) and enrolls directly from the course screen
+2. Laravel stores enrollment records in MySQL
+3. Laravel dispatches webhook event (`course.enrolled`, etc.)
+4. Webhook handler validates and logs the event when applicable
 5. Notification is stored in `notifications`
 6. FCM sender pushes to device (when configured)
 
-## Checkout Troubleshooting
+## Enrollment troubleshooting
 
-- Ensure backend is running (`php artisan serve`) and app points to correct API URL
-- Checkout now validates:
-  - cart is not empty
-  - cart has purchasable course items
-- Frontend checkout button now has robust loading/disabled states to prevent duplicate requests
+- Ensure backend is running (`php artisan serve`) and the app points to the correct API URL
+- After pulling updates, run `php artisan migrate` (wishlist table; cart/order tables removed; `courses.price` dropped)
 

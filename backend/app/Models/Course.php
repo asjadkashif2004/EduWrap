@@ -12,10 +12,11 @@ class Course extends Model
         'description',
         'thumbnail_url',
         'documentation_url',
+        'geeksforgeeks_url',
+        'w3schools_url',
         'youtube_url',
         'category',
         'level',
-        'price',
         'duration_minutes',
         'enrollment_count',
         'completion_count',
@@ -25,7 +26,6 @@ class Course extends Model
     protected function casts(): array
     {
         return [
-            'price' => 'decimal:2',
             'is_published' => 'boolean',
         ];
     }

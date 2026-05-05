@@ -30,4 +30,27 @@ class NotificationRepository
             ->latest()
             ->get();
     }
+
+    public function unreadCountForUser(int $userId): int
+    {
+        return Notification::query()
+            ->where('user_id', $userId)
+            ->whereNull('read_at')
+            ->count();
+    }
+
+    public function markAllReadForUser(int $userId): int
+    {
+        return Notification::query()
+            ->where('user_id', $userId)
+            ->whereNull('read_at')
+            ->update(['read_at' => now()]);
+    }
+
+    public function deleteAllForUser(int $userId): int
+    {
+        return Notification::query()
+            ->where('user_id', $userId)
+            ->delete();
+    }
 }

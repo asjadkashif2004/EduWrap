@@ -2,14 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Cart extends Model
+class WishlistItem extends Model
 {
     protected $fillable = [
         'user_id',
+        'course_id',
     ];
 
     public function user(): BelongsTo
@@ -17,8 +17,8 @@ class Cart extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function items(): HasMany
+    public function course(): BelongsTo
     {
-        return $this->hasMany(CartItem::class);
+        return $this->belongsTo(Course::class);
     }
 }

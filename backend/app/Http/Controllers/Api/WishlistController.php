@@ -4,14 +4,19 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
-use App\Services\CartService;
+use App\Services\WishlistService;
 use Illuminate\Http\Request;
 
-class CartController extends Controller
+class WishlistController extends Controller
 {
     public function __construct(
-        private readonly CartService $cartService,
+        private readonly WishlistService $wishlistService,
     ) {
+    }
+
+    public function show(Request $request)
+    {
+        return response()->json($this->wishlistService->getWishlist($request->user()));
     }
 
     public function store(Request $request)
@@ -22,19 +27,14 @@ class CartController extends Controller
         ]);
 
         if ($validated['action'] === 'add') {
-            $cart = $this->cartService->addCourse(
+            $wishlist = $this->wishlistService->addCourse(
                 $request->user(),
                 Course::findOrFail($validated['course_id'])
             );
         } else {
-            $cart = $this->cartService->removeCourse($request->user(), (int) $validated['course_id']);
+            $wishlist = $this->wishlistService->removeCourse($request->user(), (int) $validated['course_id']);
         }
 
-        return response()->json($cart);
-    }
-
-    public function show(Request $request)
-    {
-        return response()->json($this->cartService->getCart($request->user()));
+        return response()->json($wishlist);
     }
 }

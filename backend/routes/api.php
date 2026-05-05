@@ -2,8 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\Api\CartController;
-use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\WishlistController;
 use App\Http\Controllers\Api\CourseController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\WebhookController;
@@ -35,11 +34,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/enroll/{enrollmentId}/certificate', [EnrollmentController::class, 'certificate']);
     Route::post('/enroll/{enrollmentId}/certificate/generate', [EnrollmentController::class, 'generateCertificate']);
 
-    Route::post('/cart', [CartController::class, 'store']);
-    Route::get('/cart', [CartController::class, 'show']);
-
-    Route::post('/order', [OrderController::class, 'store']);
+    Route::get('/wishlist', [WishlistController::class, 'show']);
+    Route::post('/wishlist', [WishlistController::class, 'store']);
     Route::get('/notifications', [NotificationController::class, 'index']);
+    Route::get('/notifications/unread-count', [NotificationController::class, 'unreadCount']);
+    Route::post('/notifications/read-all', [NotificationController::class, 'markAllRead']);
+    Route::delete('/notifications', [NotificationController::class, 'destroyAll']);
 
     Route::get('/recommendations', [RecommendationController::class, 'index']);
     Route::post('/chatbot/message', [ChatbotController::class, 'message']);
